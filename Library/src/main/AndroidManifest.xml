@@ -1,12 +1,2 @@
-<manifest package="com.sloop.view.loading"
-          xmlns:android="http://schemas.android.com/apk/res/android">
+<manifest package="com.sloop.view.loading"/>
 
-    <application
-        android:allowBackup="true"
-        android:label="@string/name"
-        android:supportsRtl="true"
-        >
-
-    </application>
-
-</manifest>
