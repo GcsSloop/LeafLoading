@@ -6,4 +6,8 @@
   
   另外，该项目核心实现代码来参考了一位CSDN大神的博客：详戳->[【一个绚丽的loading动效分析与实现！】](http://blog.csdn.net/tianjian4592/article/details/44538605)。关于我修改的内容，我会在下面进行介绍。
   
-  
+## 创意原型
+
+效果图如下：<br/>
+![LeafLoading](https://github.com/GcsSloop/LeafLoading/blob/master/Resources/model.gif)
+
