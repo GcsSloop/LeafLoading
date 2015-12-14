@@ -1,4 +1,5 @@
-# LeafLoading
+<img src="https://github.com/GcsSloop/LeafLoading/blob/master/Art/logo_512.png" width = "40" height = "40" alt="logo" align=center />  
+<font size=“4”>LeafLoading</font>
 ### 仿风扇树叶加载效果
 ### 作者微博: [@安卓攻城师sloop](http://weibo.com/5459430586)
 ## 声明：
@@ -8,6 +9,10 @@
   
 ## 创意原型
 
-效果图如下：<br/>
-![LeafLoading](https://github.com/GcsSloop/LeafLoading/blob/master/Resources/model.gif)
+#### 原型效果图如下：
+![LeafLoading](https://github.com/GcsSloop/LeafLoading/blob/master/Art/model.gif)
+#### 实现效果图如下：
+![LeafLoadingDemo](https://github.com/GcsSloop/LeafLoading/blob/master/Art/loadingTest.gif)
+
+目前实现了原型中百分之九十左右的内容。
 
