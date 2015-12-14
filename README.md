@@ -94,7 +94,7 @@ com.sloop.view.utils.UiUtils.java
 
 ---
 ## 致谢：
-  感谢原作者 [学问积年而成](http://blog.csdn.net/tianjian4592?viewmode=list) 的提供的实现原型。
+  感谢原作者 [学问积年而成](http://blog.csdn.net/tianjian4592?viewmode=list) 提供的实现原型。
 
 
 
