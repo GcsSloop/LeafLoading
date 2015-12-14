@@ -1,5 +1,4 @@
 <img src="https://github.com/GcsSloop/LeafLoading/blob/master/Art/title.png" width = "375" height = "100" alt="title" align=center />  
-### 仿风扇树叶加载效果
 ### 作者微博: [@攻城师sloop](http://weibo.com/5459430586)
 ## 声明：
   由于该项目的创意来自于网络，并未寻找到原作者，所以可能存在侵权行为，使用前请慎重。如果您是该创意原作者，感觉侵犯了您的权利，可以在微博上联系我，侵删。
@@ -14,3 +13,4 @@
 ![LeafLoadingDemo](https://github.com/GcsSloop/LeafLoading/blob/master/Art/loadingTest.gif)
 
 目前实现了原型中百分之九十左右的内容。
+
