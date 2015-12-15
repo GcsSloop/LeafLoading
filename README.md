@@ -1,4 +1,4 @@
-<img src="https://github.com/GcsSloop/LeafLoading/blob/master/Art/title.png" width = "375" height = "100" alt="title" align=center />  
+<img src="https://github.com/GcsSloop/LeafLoading/blob/master/Art/title.png" width = "300" height = "75" alt="title" align=center />  
 ### 作者微博: [@攻城师sloop](http://weibo.com/5459430586)
 ## 声明
   由于该项目的创意来自于网络，并未寻找到原作者，所以可能存在侵权行为，使用前请慎重。如果您是该创意原作者，感觉侵犯了您的权利，可以在微博上联系我，侵删。
@@ -9,10 +9,10 @@
   0.添加风扇部分绘制
   1.修改了View测量逻辑
   2.对视图大小进行了适配
+  3.添加了监听回调接口
   
 目前仍存在的问题(待完善或者添加的功能)
   0.振幅引起在不同视图大小的情况下差异过大的问题
-  1.添加监听回调
   2.绑定风扇转速 树叶数量 和进度快慢之间的关系
 
 如果你对此有好的想法欢迎在Issues中提交。
@@ -68,7 +68,7 @@ allprojects {
 #### 2.在Module目录下的build.gradle中添加依赖
 ```
   //leafloding
-    compile 'com.sloop.view.loading:leafloading:1.0.0'
+    compile 'com.sloop.view.loading:leafloading:1.0.1'
 ```
 示例：
 ```
@@ -91,6 +91,12 @@ allprojects {
 com.sloop.view.loding.LeafLoding.java
 com.sloop.view.utils.UiUtils.java
 ```
+---
+## 更新内容：
+版本号 | 更新内容
+ ---   |  ---
+v1.0.0 | 完善基本功能，进行大小适配
+v1.0.1 | 完善注释文档，添加监听回调
 
 ---
 ## 致谢：
