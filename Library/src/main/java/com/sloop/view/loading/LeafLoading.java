@@ -21,15 +21,15 @@ import java.util.List;
 import java.util.Random;
 
 /**
- * 一个叶子飞旋的Loading核心类<br/>
- * 参考资料：http://blog.csdn.net/tianjian4592/article/details/44538605<br/>
+ * 一个叶子飞旋的Loading核心类
+ * 参考资料：http://blog.csdn.net/tianjian4592/article/details/44538605
  * Author: Sloop
  * Version: v1.0
  * Date: 2015/12/9
  * <ul type="disc">
- * <li><a href="http://www.sloop.icoc.cc"    target="_blank">作者网站</a>      <br/></li>
- * <li><a href="http://weibo.com/5459430586" target="_blank">作者微博</a>      <br/></li>
- * <li><a href="https://github.com/GcsSloop" target="_blank">作者GitHub</a>   <br/></li>
+ * <li><a href="http://www.sloop.icoc.cc"    target="_blank">作者网站</a>      </li>
+ * <li><a href="http://weibo.com/5459430586" target="_blank">作者微博</a>      </li>
+ * <li><a href="https://github.com/GcsSloop" target="_blank">作者GitHub</a>   </li>
  * </ul>
  */
 public class LeafLoading extends View {
@@ -87,17 +87,35 @@ public class LeafLoading extends View {
     private float mFanPaintSideLength;                      //风扇绘制时边长
     private long mFanSpeed = FAN_SPEED;                     //风扇旋转速率级别(1-10)
 
+    //回调接口
+    private ProgressChangedListener mListener;
 
+    /**
+     * 构造函数
+     *
+     * @param context 上下文
+     */
     public LeafLoading(Context context) {
         super(context);
         init((ContextThemeWrapper) context);
     }
 
+    /**
+     * 构造函数
+     *
+     * @param context 上下文
+     * @param attrs   参数集
+     */
     public LeafLoading(Context context, AttributeSet attrs) {
         super(context, attrs);
         init((ContextThemeWrapper) context);
     }
 
+    /**
+     * 初始化
+     *
+     * @param context 上下文
+     */
     private void init(ContextThemeWrapper context) {
         initResources(context);
         initBitmap();
@@ -107,6 +125,11 @@ public class LeafLoading extends View {
         mFan = new FanFactory().generateFan();
     }
 
+    /**
+     * 初始化资源
+     *
+     * @param context 上下文
+     */
     private void initResources(ContextThemeWrapper context) {
         mResources = getResources();
         mLeafFloatTime = LEAF_FLOAT_TIME;
@@ -115,8 +138,10 @@ public class LeafLoading extends View {
         mDefaultHeight = UiUtils.dip2px(context, mDefaultHeight);
     }
 
+    /**
+     * 初始化Bitmap
+     */
     private void initBitmap() {
-
         mLeafBitmap = ((BitmapDrawable) mResources.getDrawable(R.drawable.leaf_xxhdpi)).getBitmap();
         mLeafBitmapWidth = mLeafBitmap.getWidth();
         mLeafBitmapHeight = mLeafBitmap.getHeight();
@@ -129,6 +154,9 @@ public class LeafLoading extends View {
         mFanBitmapSideLength = mFanBitmap.getWidth();
     }
 
+    /**
+     * 初始化画笔
+     */
     private void initPaint() {
         mBitmapPaint = new Paint();
         mBitmapPaint.setAntiAlias(true);
@@ -144,7 +172,12 @@ public class LeafLoading extends View {
         mOrangePaint.setColor(COLOR_ORANGE);
     }
 
-    //确定View的大小
+    /**
+     * 测量视图大小
+     *
+     * @param widthMeasureSpec  用户设置的宽度
+     * @param heightMeasureSpec 用户设置的高度
+     */
     @Override
     protected void onMeasure(int widthMeasureSpec, int heightMeasureSpec) {
         ViewGroup.LayoutParams params = this.getLayoutParams();
@@ -158,7 +191,13 @@ public class LeafLoading extends View {
         setMeasuredDimension(measureWidth, measureHeight);
     }
 
-    //获取宽度测量值
+    /**
+     * 获取宽度测量值
+     *
+     * @param widthMeasureSpec 用户设置的宽度
+     * @param params           布局参数
+     * @return 实际宽度
+     */
     private int getMeasureWidth(int widthMeasureSpec, ViewGroup.LayoutParams params) {
         int measureWidth;
         if (params.width == ViewGroup.LayoutParams.MATCH_PARENT) {
@@ -171,7 +210,13 @@ public class LeafLoading extends View {
         return measureWidth;
     }
 
-    //获取高度测量值
+    /**
+     * 获取测量的高度值
+     *
+     * @param heightMeasureSpec 用户设置的高度
+     * @param params            布局参数
+     * @return 实际的高度
+     */
     private int getMeasureHeight(int heightMeasureSpec, ViewGroup.LayoutParams params) {
         int measureHeight;
         if (params.height == ViewGroup.LayoutParams.MATCH_PARENT) {
@@ -184,7 +229,16 @@ public class LeafLoading extends View {
         return measureHeight;
     }
 
-    //以确定视图大小 进行参数初始化(各个数值之间存在比例管理，详情请见说明文件)
+
+    /**
+     * 在视图大小确定后的回调函数
+     * 进行参数初始化(各个数值之间存在比例关系，详情请见说明文件)
+     *
+     * @param w    当前宽度
+     * @param h    当前高度
+     * @param oldw 上一次宽度
+     * @param oldh 上一次高度
+     */
     @Override
     protected void onSizeChanged(int w, int h, int oldw, int oldh) {
         int mTotalWidth = w > h * 5 ? h * 5 : w;
@@ -217,6 +271,11 @@ public class LeafLoading extends View {
         mArcRightLocation = mLeftMargin + mArcRadius;
     }
 
+    /**
+     * 绘制内容
+     *
+     * @param canvas 画布
+     */
     @Override
     protected void onDraw(Canvas canvas) {
         super.onDraw(canvas);
@@ -227,6 +286,11 @@ public class LeafLoading extends View {
         postInvalidate();
     }
 
+    /**
+     * 绘制进度条和叶子
+     *
+     * @param canvas 画布
+     */
     private void drawProgressAndLeafs(Canvas canvas) {
         if (mCurrentProgress >= TOTAL_PROGRESS) {
             mCurrentProgress = TOTAL_PROGRESS;
@@ -279,6 +343,11 @@ public class LeafLoading extends View {
 
     }
 
+    /**
+     * 绘制叶子
+     *
+     * @param canvas 画布
+     */
     private void drawLeafs(Canvas canvas) {
         mLeafRotateTime = mLeafRotateTime <= 0 ? LEAF_ROTATE_TIME : mLeafRotateTime;
         long currentTime = System.currentTimeMillis();
@@ -316,6 +385,12 @@ public class LeafLoading extends View {
         }
     }
 
+    /**
+     * 获取当前坐标
+     *
+     * @param leaf        叶子对象
+     * @param currentTime 当前时间
+     */
     private void getLeafLocation(Leaf leaf, long currentTime) {
         mLeafFloatTime = mLeafFloatTime <= 0 ? LEAF_FLOAT_TIME : mLeafFloatTime;
         long intervalTime = currentTime - leaf.startTime;
@@ -334,6 +409,12 @@ public class LeafLoading extends View {
         // Log.e(TAG, "mProgressWidth = " + mProgressWidth + "--fraction=" + fraction);
     }
 
+    /**
+     * 获取叶子的当前的Y坐标
+     *
+     * @param leaf 叶子对象
+     * @return 当前y轴坐标
+     */
     private float getLeafLocationY(Leaf leaf) {
         // y= A sin(ωx+φ) + h 正弦函数
         float ω = (float) ((float) 2 * Math.PI / mProgressWidth);
@@ -347,6 +428,11 @@ public class LeafLoading extends View {
         return y;
     }
 
+    /**
+     * 绘制风扇
+     *
+     * @param canvas 画布
+     */
     private void drawFan(Canvas canvas) {
         long currentTime = System.currentTimeMillis();
         long mFanRotateTime = (10 - mFanSpeed) * FAN_SPEED_DISPARITY + 500;
@@ -453,7 +539,7 @@ public class LeafLoading extends View {
     /**
      * 设置中等振幅
      *
-     * @param amplitude
+     * @param amplitude 中等振幅
      */
     public void setMiddleAmplitude(int amplitude) {
         this.mMiddleAmplitude = amplitude;
@@ -462,7 +548,7 @@ public class LeafLoading extends View {
     /**
      * 设置振幅差
      *
-     * @param disparity
+     * @param disparity 振幅差
      */
     public void setMplitudeDisparity(int disparity) {
         this.mAmplitudeDisparity = disparity;
@@ -470,6 +556,8 @@ public class LeafLoading extends View {
 
     /**
      * 获取中等振幅
+     *
+     * @return 中等振幅
      */
     public int getMiddleAmplitude() {
         return mMiddleAmplitude;
@@ -477,6 +565,8 @@ public class LeafLoading extends View {
 
     /**
      * 获取振幅差
+     *
+     * @return 振幅差
      */
     public int getMplitudeDisparity() {
         return mAmplitudeDisparity;
@@ -485,17 +575,21 @@ public class LeafLoading extends View {
     /**
      * 设置进度
      *
-     * @param progress
+     * @param progress 当前进度
      */
     public void setProgress(int progress) {
         this.mCurrentProgress = progress;
+        //添加回调
+        if (mListener != null) {
+            mListener.onProgressChanged(progress, TOTAL_PROGRESS);
+        }
         postInvalidate();
     }
 
     /**
      * 设置叶子飘完一个周期所花的时间
      *
-     * @param time
+     * @param time 飘完一个周期所花的时间
      */
     public void setLeafFloatTime(long time) {
         this.mLeafFloatTime = time;
@@ -504,7 +598,7 @@ public class LeafLoading extends View {
     /**
      * 设置叶子旋转一周所花的时间
      *
-     * @param time
+     * @param time 有叶子旋转周期
      */
     public void setLeafRotateTime(long time) {
         this.mLeafRotateTime = time;
@@ -512,6 +606,8 @@ public class LeafLoading extends View {
 
     /**
      * 获取叶子飘完一个周期所花的时间
+     *
+     * @return 叶子飘完一个周期所花的时间
      */
     public long getLeafFloatTime() {
         mLeafFloatTime = mLeafFloatTime == 0 ? LEAF_FLOAT_TIME : mLeafFloatTime;
@@ -519,10 +615,49 @@ public class LeafLoading extends View {
     }
 
     /**
-     * 获取叶子旋转一周所花的时间
+     * 获取叶子旋转周期
+     *
+     * @return 叶子旋转一周所花的时间
      */
     public long getLeafRotateTime() {
         mLeafRotateTime = mLeafRotateTime == 0 ? LEAF_ROTATE_TIME : mLeafRotateTime;
         return mLeafRotateTime;
+    }
+
+    /**
+     * 获取风扇转速
+     *
+     * @return 风扇转速
+     */
+    public long getmFanSpeed() {
+        return mFanSpeed;
+    }
+
+    /**
+     * 设置风扇转速
+     *
+     * @param mFanSpeed 风扇转速
+     */
+    public void setmFanSpeed(long mFanSpeed) {
+        if (mFanSpeed < 0) return;
+        if (mFanSpeed > 10) return;
+        this.mFanSpeed = mFanSpeed;
+    }
+
+
+    /**
+     * 设置监听回调接口
+     *
+     * @param mListener 监听器
+     */
+    public void setListener(ProgressChangedListener mListener) {
+        this.mListener = mListener;
+    }
+
+    /**
+     * 监听回调接口
+     */
+    public interface ProgressChangedListener {
+        void onProgressChanged(int currentProgress, int totalProgress);
     }
 }
