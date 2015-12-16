@@ -1,4 +1,7 @@
 <img src="https://github.com/GcsSloop/LeafLoading/blob/master/Art/title.png" width = "300" height = "75" alt="title" align=center />  
+
+[![License](https://img.shields.io/badge/license-Apache%202-green.svg)](https://www.apache.org/licenses/LICENSE-2.0)
+[![Maven Central](https://img.shields.io/bintray/v/gcssloop/maven/leafloding.svg)](https://bintray.com/gcssloop/maven/leafloding/view)
 ### 作者微博: [@攻城师sloop](http://weibo.com/5459430586)
 ## 声明
   由于该项目的创意来自于网络，并未寻找到原作者，所以可能存在侵权行为，使用前请慎重。如果您是该创意原作者，感觉侵犯了您的权利，可以在微博上联系我，侵删。
